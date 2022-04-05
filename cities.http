@@ -1,0 +1,3 @@
+@baseUrl=http://js-post-api.herokuapp.com/api
+
+GET {{baseUrl}}/cities?_limit=10&_page=1
