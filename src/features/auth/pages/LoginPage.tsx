@@ -1,5 +1,7 @@
 import { Paper, makeStyles, Typography, Box, Button } from '@material-ui/core';
+import { useAppDispatch } from 'app/hooks';
 import * as React from 'react';
+import { authActions } from '../authSlice';
 const useStyle = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -15,6 +17,15 @@ const useStyle = makeStyles((theme) => ({
 }));
 export default function LoginPage() {
   const classess = useStyle();
+  const dispatch = useAppDispatch();
+  const handleLoginClick = () => {
+    dispatch(
+      authActions.login({
+        username: '',
+        password: '',
+      })
+    );
+  };
   return (
     <div className={classess.root}>
       <Paper elevation={1} className={classess.box}>
@@ -22,7 +33,7 @@ export default function LoginPage() {
           Student Management
         </Typography>
         <Box mt={4}>
-          <Button fullWidth variant="contained" color="primary">
+          <Button fullWidth variant="contained" color="primary" onClick={handleLoginClick}>
             Fake Login
           </Button>
         </Box>

@@ -5,6 +5,7 @@ export interface AuthState {
   isLoggedIn: boolean;
   logging?: boolean;
   currentUser?: User;
+  isLoggedInSuccess: boolean;
 }
 export interface LoginPayload {
   username: string;
@@ -14,6 +15,7 @@ const initialState: AuthState = {
   isLoggedIn: false,
   logging: false,
   currentUser: undefined,
+  isLoggedInSuccess: false,
 };
 const authSlice = createSlice({
   name: 'auth',
@@ -21,18 +23,23 @@ const authSlice = createSlice({
   reducers: {
     login(state, action: PayloadAction<LoginPayload>) {
       state.logging = true;
+      state.isLoggedInSuccess = true;
     },
     loginSuccess(state, action: PayloadAction<User>) {
       state.logging = false;
       state.isLoggedIn = true;
+
       state.currentUser = action.payload;
+      state.isLoggedInSuccess = true;
     },
     loginFailed(state, action: PayloadAction<string>) {
       state.logging = false;
+      state.isLoggedInSuccess = false;
     },
     logout(state) {
       state.isLoggedIn = false;
       state.currentUser = undefined;
+      state.isLoggedInSuccess = false;
     },
   },
 });
