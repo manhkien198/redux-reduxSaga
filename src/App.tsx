@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { NotFound, PrivateRoute } from 'components/Common';
-import { AdminLayout } from 'components/Common/Layout';
+import { AdminLayout } from 'components/Layout';
 import { authActions } from 'features/auth/authSlice';
 import LoginPage from 'features/auth/pages/LoginPage';
 import { useEffect } from 'react';
