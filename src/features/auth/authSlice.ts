@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from 'models/user';
+import { history } from 'utils';
 
 export interface AuthState {
   isLoggedIn: boolean;
@@ -30,6 +31,7 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.currentUser = action.payload;
       state.isLoggedInSuccess = true;
+      history.push('/admin');
     },
     loginFailed(state, action: PayloadAction<string>) {
       state.logging = false;
@@ -39,6 +41,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.currentUser = undefined;
       state.isLoggedInSuccess = false;
+      history.push('/login');
     },
   },
 });
