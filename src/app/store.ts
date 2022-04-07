@@ -1,5 +1,6 @@
 import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import authReducer from 'features/auth/authSlice';
+import dashboardReducer from 'features/dashboard/dashboardSlice';
 import creatSagaMiddleware from 'redux-saga';
 import counterReducer from '../features/counter/counterSlice';
 import rootSaga from './rootSaga';
@@ -9,6 +10,7 @@ export const store = configureStore({
   reducer: {
     counter: counterReducer,
     auth: authReducer,
+    dashboard: dashboardReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });
