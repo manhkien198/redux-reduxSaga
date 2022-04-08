@@ -24,6 +24,7 @@ const authSlice = createSlice({
       state.logging = true;
     },
     loginSuccess(state, action: PayloadAction<User>) {
+      console.log('runnnn');
       state.logging = false;
       state.isLoggedIn = true;
       state.currentUser = action.payload;

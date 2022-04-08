@@ -23,11 +23,10 @@ export default function LoginPage() {
   const isLogging = useAppSelector((state) => state.auth.logging);
 
   const handleLoginClick = () => {
-    // TODO: Get username + pwd from login form
     dispatch(
       authActions.login({
-        username: '',
-        password: '',
+        username: 'kienpm',
+        password: 'kienpm',
       })
     );
   };

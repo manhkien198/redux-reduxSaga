@@ -5,7 +5,7 @@ import { authActions, LoginPayload } from './authSlice';
 function* handleLogin(payload: LoginPayload) {
   try {
     yield delay(1000);
-    localStorage.setItem('access_token', 'fake_token');
+    yield localStorage.setItem('access_token', 'fake_token');
     yield put(
       authActions.loginSuccess({
         id: 1,
@@ -18,12 +18,13 @@ function* handleLogin(payload: LoginPayload) {
 }
 function* handleLogout() {
   yield delay(500);
-
   localStorage.removeItem('access_token');
   yield put(authActions.logout());
 }
 function* watchLoginFlow() {
   while (true) {
+    // debugger;
+
     const isLoggedIn = Boolean(localStorage.getItem('access_token'));
     if (!isLoggedIn) {
       const action: PayloadAction<LoginPayload> = yield take(authActions.login.type);
