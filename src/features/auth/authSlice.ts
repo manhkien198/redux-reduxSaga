@@ -24,11 +24,10 @@ const authSlice = createSlice({
       state.logging = true;
     },
     loginSuccess(state, action: PayloadAction<User>) {
-      console.log('runnnn');
       state.logging = false;
       state.isLoggedIn = true;
       state.currentUser = action.payload;
-      history.push('/admin/dashboard');
+      window.location.href = '/admin/dashboard';
     },
     loginFailed(state, action: PayloadAction<string>) {
       state.logging = false;
@@ -36,7 +35,7 @@ const authSlice = createSlice({
     logout(state) {
       state.isLoggedIn = false;
       state.currentUser = undefined;
-      history.push('/login');
+      history.push('/');
     },
   },
 });

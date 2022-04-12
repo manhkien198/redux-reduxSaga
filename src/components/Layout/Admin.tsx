@@ -1,6 +1,6 @@
 import { Box, makeStyles } from '@material-ui/core';
 import { Header, Sidebar } from 'components/Common';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -26,17 +26,25 @@ const useStyle = makeStyles((theme) => ({
 }));
 export function AdminLayout() {
   const classess = useStyle();
+  const isLoggedIn = Boolean(localStorage.getItem('access_token'));
+
   return (
-    <Box className={classess.root}>
-      <Box className={classess.header}>
-        <Header />
-      </Box>
-      <Box className={classess.sidebar}>
-        <Sidebar />
-      </Box>
-      <Box className={classess.main}>
-        <Outlet />
-      </Box>
-    </Box>
+    <>
+      {isLoggedIn ? (
+        <Box className={classess.root}>
+          <Box className={classess.header}>
+            <Header />
+          </Box>
+          <Box className={classess.sidebar}>
+            <Sidebar />
+          </Box>
+          <Box className={classess.main}>
+            <Outlet />
+          </Box>
+        </Box>
+      ) : (
+        <Navigate to="/" />
+      )}
+    </>
   );
 }
