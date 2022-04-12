@@ -7,7 +7,6 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { City, ListParams } from 'models';
 import { ChangeEvent, useRef } from 'react';
-import { selectDashboardStatistics } from '../../dashboard/dashboardSlice';
 export interface StudentFilterProps {
   filter: ListParams;
   cityList: City[];
@@ -90,7 +89,6 @@ export default function StudentFilter({
             <InputLabel id="filterByCity">Filter by city</InputLabel>
             <Select
               labelId="filterByCity"
-              id="filterByCity"
               input={<OutlinedInput label="Filter by city" />}
               label="Filter by city"
               value={filter.city || ''}

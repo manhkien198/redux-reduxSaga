@@ -8,6 +8,7 @@ import { ListParams, Student } from 'models';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { selectCityList } from '../../city/citySlice';
 import StudentFilter from '../components/Filter';
 import StudentTable from '../components/StudentTable';
@@ -69,6 +70,15 @@ export default function ListPage() {
     } catch (error) {
       console.log('Fail to fetch student', error);
     }
+    toast.success('Remove student successfully', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   const handleEditStudent = async (student: Student) => {
     navi(`/admin/students/${student.id}`);
