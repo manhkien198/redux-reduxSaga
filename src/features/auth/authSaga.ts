@@ -5,7 +5,7 @@ import { authActions, LoginPayload } from './authSlice';
 function* handleLogin(payload: LoginPayload) {
   try {
     yield delay(1000);
-    yield localStorage.setItem('access_token', 'fake_token');
+    localStorage.setItem('access_token', 'fake_token');
     yield put(
       authActions.loginSuccess({
         id: 1,
